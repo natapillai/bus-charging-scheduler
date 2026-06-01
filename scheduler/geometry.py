@@ -103,21 +103,33 @@ def feasible_plans(world, bus) -> list[list[str]]:
     return plans
 
 
-def choose_plan(world, bus, load_so_far=None):
-    """Pick the default plan for a bus.
+def choose_plan(world, bus, load_so_far=None, operator_load=None):
+    """Pick the plan for a bus.
 
-    The preference is the fewest charges, then the stations carrying the least
-    assigned load so far so buses spread across stations, then the station
-    identifiers so the choice is deterministic. Returns None when no plan is
-    feasible so the caller can surface a clear violation.
+    The first preference is always the fewest charges, which keeps trips short
+    and feasible. Among plans with the same charge count the choice spreads load
+    across stations, and the spread is weight aware. The overall weight pushes a
+    bus away from stations that are already busy across the whole network, and
+    the operator weight pushes a bus away from stations its own operator is
+    already stacking on, so a fleet runs more smoothly as a group. Remaining ties
+    fall to the station identifiers so the choice is deterministic. This is the
+    second place the weights act, alongside conflict resolution, which lets the
+    operator weight change a schedule even when buses never queue at once.
+    Returns None when no plan is feasible so the caller can surface a violation.
     """
     load_so_far = load_so_far or {}
+    operator_load = operator_load or {}
     plans = feasible_plans(world, bus)
     if not plans:
         return None
 
+    overall_weight = world.weights.get("overall", 0.0)
+    operator_weight = world.weights.get("operator", 0.0)
+
     def key(plan):
-        load = sum(load_so_far.get(station_id, 0) for station_id in plan)
-        return (len(plan), load, tuple(plan))
+        station_load = sum(load_so_far.get(station_id, 0) for station_id in plan)
+        own_load = sum(operator_load.get((bus.operator, station_id), 0) for station_id in plan)
+        spread = overall_weight * station_load + operator_weight * own_load
+        return (len(plan), spread, tuple(plan))
 
     return min(plans, key=key)

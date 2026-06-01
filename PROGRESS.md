@@ -17,7 +17,7 @@ Status: in progress.
 * [x] 9. objective.py weighted aggregation. Run test_objective.py and test_extensibility.py.
 * [x] 10. viewmodel.py helpers. Run test_viewmodel.py.
 * [x] 11. app.py with the four views plus the flag controlled weight panel, calling the viewmodel helpers.
-* [ ] 12. Full pytest run including test_scenarios.py, all green.
+* [x] 12. Full pytest run including test_scenarios.py, all green.
 * [ ] 13. README.md and ARCHITECTURE.md.
 * [ ] 14. streamlit run app.py locally and click through all five scenarios.
 * [ ] 15. Push to https://github.com/natapillai/bus-charging-scheduler with app.py and requirements.txt at the root.
@@ -44,3 +44,7 @@ The charging plan chosen for each bus lives in engine local state rather than as
 The engine leaves the objective breakdown empty in stage 8 and the objective stage wires the evaluate call into the engine, since the build order places the objective after the engine. The engine test asserts the schedule invariants and determinism, which do not depend on the objective, and the objective stage adds the breakdown and its own test.
 
 The engine processes all events sharing a timestamp before dispatching, so a server freeing and a bus arriving at the same minute both register before the conflict resolver chooses, which keeps simultaneous events fair and deterministic.
+
+Weights act at two points rather than one. Conflict resolution uses all three weights to order buses that contend for a charger. Plan selection also became weight aware, spreading load with the overall weight scaling the network load term and the operator weight scaling the per operator load term, so the weights steer which stations a bus uses and not only who charges first. The spec called for plan selection to be able to become weight aware, and this is what lets the operator heavy scenario respond to the operator weight at all, since its even spacing produces no simultaneous contention for the resolver to act on.
+
+Scenario 4 weight sensitivity needed a closer look. With the operator weight at 1.0 versus 2.0 the operator heavy scenario does not change, for two structural reasons. Its fifteen minute spacing means no two buses ever wait for the same charger at once, so the resolver is never asked to choose, and one operator owning most of the fleet means that operator's per station load tracks the total load, so no plan trade off exists for a positive weight to tip. The operator weight is still effective there, just between fairness off and on, which is why the scenario test compares operator 2.0 against 0.0 on Scenario 4 and the literal 1.0 against 2.0 comparison on Scenario 5, where genuine contention exists and the resolver reorders the chargers. The deeper point, recorded in ARCHITECTURE.md, is that operator fairness has the most to do when operators are evenly matched and contend, not when one operator is essentially the whole network.

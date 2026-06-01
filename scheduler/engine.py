@@ -70,7 +70,10 @@ def schedule(scenario, weights=None) -> ScheduleResult:
     resolver = ConflictResolver()
 
     # Choose a plan for each bus in scenario order, spreading load across stations.
+    # The total load spreads buses across the network and the per operator load
+    # lets the operator weight steer a fleet off stations it already crowds.
     load: dict[str, int] = {}
+    operator_load: dict[tuple, int] = {}
     plans: dict[str, list] = {}
     offsets_by_bus: dict[str, dict] = {}
     totals: dict[str, float] = {}
@@ -79,13 +82,14 @@ def schedule(scenario, weights=None) -> ScheduleResult:
         offsets, total = distance_from_origin(world, bus)
         offsets_by_bus[bus.id] = offsets
         totals[bus.id] = total
-        plan = choose_plan(world, bus, load)
+        plan = choose_plan(world, bus, load, operator_load)
         if plan is None:
             plan_violations.append(f"{bus.id} has no feasible charging plan within range")
             plan = []
         plans[bus.id] = plan
         for station_id in plan:
             load[station_id] = load.get(station_id, 0) + 1
+            operator_load[(bus.operator, station_id)] = operator_load.get((bus.operator, station_id), 0) + 1
 
     # Simulation state.
     timelines: dict[str, list] = {bus.id: [] for bus in buses}
