@@ -12,7 +12,7 @@ Status: in progress.
 * [x] 4. Five scenario JSON files from BUILD_SPEC section 6. Verify counts, twenty for Scenarios 1, 2, 4, 5 and fourteen for Scenario 3.
 * [x] 5. geometry.py, cumulative distances, travel time, feasible plan enumeration. Run test_geometry.py.
 * [x] 6. rules/base.py registry, hard.py, soft.py, and rules/__init__.py auto import. Run test_hard_rules.py and test_soft_rules.py.
-* [ ] 7. conflict.py ConflictResolver. Run test_conflict.py.
+* [x] 7. conflict.py ConflictResolver. Run test_conflict.py.
 * [ ] 8. engine.py event simulation that validates with the hard rules. Run test_engine.py.
 * [ ] 9. objective.py weighted aggregation. Run test_objective.py and test_extensibility.py.
 * [ ] 10. viewmodel.py helpers. Run test_viewmodel.py.
