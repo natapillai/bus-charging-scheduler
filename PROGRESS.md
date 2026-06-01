@@ -9,7 +9,7 @@ Status: in progress.
 * [x] 1. Scaffold the repo, the package directories, requirements.txt, and tests/conftest.py with fixtures.
 * [x] 2. domain.py dataclasses for inputs and outputs.
 * [x] 3. loader.py with HH:MM parsing. Run test_loader.py.
-* [ ] 4. Five scenario JSON files from BUILD_SPEC section 6. Verify counts, twenty for Scenarios 1, 2, 4, 5 and fourteen for Scenario 3.
+* [x] 4. Five scenario JSON files from BUILD_SPEC section 6. Verify counts, twenty for Scenarios 1, 2, 4, 5 and fourteen for Scenario 3.
 * [ ] 5. geometry.py, cumulative distances, travel time, feasible plan enumeration. Run test_geometry.py.
 * [ ] 6. rules/base.py registry, hard.py, soft.py, and rules/__init__.py auto import. Run test_hard_rules.py and test_soft_rules.py.
 * [ ] 7. conflict.py ConflictResolver. Run test_conflict.py.
