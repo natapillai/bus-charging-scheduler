@@ -18,7 +18,7 @@ Status: in progress.
 * [x] 10. viewmodel.py helpers. Run test_viewmodel.py.
 * [x] 11. app.py with the four views plus the flag controlled weight panel, calling the viewmodel helpers.
 * [x] 12. Full pytest run including test_scenarios.py, all green.
-* [ ] 13. README.md and ARCHITECTURE.md.
+* [x] 13. README.md and ARCHITECTURE.md.
 * [ ] 14. streamlit run app.py locally and click through all five scenarios.
 * [ ] 15. Push to https://github.com/natapillai/bus-charging-scheduler with app.py and requirements.txt at the root.
 
@@ -26,10 +26,10 @@ Status: in progress.
 
 * [ ] Hosted Streamlit link, public.
 * [ ] Public GitHub repo with all code and all five scenarios.
-* [ ] README.md covering how to run, how to change a weight, and how to add a rule.
-* [ ] ARCHITECTURE.md covering the approach and why, the data model, the anticipated changes list, a weight change example, an add a rule example, and the assumptions.
-* [ ] All hard rules pass on every scenario with no violations.
-* [ ] Weights demonstrably change schedules, verified by the sensitivity tests.
+* [x] README.md covering how to run, how to change a weight, and how to add a rule.
+* [x] ARCHITECTURE.md covering the approach and why, the data model, the anticipated changes list, a weight change example, an add a rule example, and the assumptions.
+* [x] All hard rules pass on every scenario with no violations.
+* [x] Weights demonstrably change schedules, verified by the sensitivity tests.
 
 ## Deviations and decisions
 
