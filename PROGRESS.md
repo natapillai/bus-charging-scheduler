@@ -19,7 +19,7 @@ Status: in progress.
 * [x] 11. app.py with the four views plus the flag controlled weight panel, calling the viewmodel helpers.
 * [x] 12. Full pytest run including test_scenarios.py, all green.
 * [x] 13. README.md and ARCHITECTURE.md.
-* [ ] 14. streamlit run app.py locally and click through all five scenarios.
+* [x] 14. streamlit run app.py locally and click through all five scenarios.
 * [ ] 15. Push to https://github.com/natapillai/bus-charging-scheduler with app.py and requirements.txt at the root.
 
 ## Deliverables check
