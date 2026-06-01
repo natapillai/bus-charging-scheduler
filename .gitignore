@@ -18,3 +18,6 @@ env/
 
 # Local reference copy of the original assignment, not part of the submission
 information_utf8.md
+
+# Local tooling, the preview launch config is not part of the submission
+.claude/

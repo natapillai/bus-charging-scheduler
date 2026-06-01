@@ -2,7 +2,7 @@
 
 Living checklist for the build. Claude Code updates this as it goes. Tick each item once its code and its test are done and green, and commit that stage in the same step so each ticked item corresponds to one commit.
 
-Status: in progress.
+Status: complete, all fifteen stages done and the suite is green. The only remaining step is the hosted Streamlit link, which is created from the public repo.
 
 ## Stages
 
@@ -20,12 +20,12 @@ Status: in progress.
 * [x] 12. Full pytest run including test_scenarios.py, all green.
 * [x] 13. README.md and ARCHITECTURE.md.
 * [x] 14. streamlit run app.py locally and click through all five scenarios.
-* [ ] 15. Push to https://github.com/natapillai/bus-charging-scheduler with app.py and requirements.txt at the root.
+* [x] 15. Push to https://github.com/natapillai/bus-charging-scheduler with app.py and requirements.txt at the root.
 
 ## Deliverables check
 
 * [ ] Hosted Streamlit link, public.
-* [ ] Public GitHub repo with all code and all five scenarios.
+* [x] Public GitHub repo with all code and all five scenarios.
 * [x] README.md covering how to run, how to change a weight, and how to add a rule.
 * [x] ARCHITECTURE.md covering the approach and why, the data model, the anticipated changes list, a weight change example, an add a rule example, and the assumptions.
 * [x] All hard rules pass on every scenario with no violations.
