@@ -7,7 +7,7 @@ Status: in progress.
 ## Stages
 
 * [x] 1. Scaffold the repo, the package directories, requirements.txt, and tests/conftest.py with fixtures.
-* [ ] 2. domain.py dataclasses for inputs and outputs.
+* [x] 2. domain.py dataclasses for inputs and outputs.
 * [ ] 3. loader.py with HH:MM parsing. Run test_loader.py.
 * [ ] 4. Five scenario JSON files from BUILD_SPEC section 6. Verify counts, twenty for Scenarios 1, 2, 4, 5 and fourteen for Scenario 3.
 * [ ] 5. geometry.py, cumulative distances, travel time, feasible plan enumeration. Run test_geometry.py.
