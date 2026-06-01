@@ -1,0 +1,20 @@
+# Byte compiled Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Pytest
+.pytest_cache/
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+
+# Local reference copy of the original assignment, not part of the submission
+information_utf8.md
