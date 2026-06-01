@@ -106,6 +106,23 @@ def make_bus():
 
 
 @pytest.fixture
+def registry_guard():
+    """Snapshot the rule registries and restore them after the test.
+
+    Tests that register throwaway rules use this so the extra rules do not leak
+    into other tests. The restore writes back in place so the same list objects
+    the engine and objective hold references to stay valid.
+    """
+    from scheduler.rules import HARD_RULES, SOFT_RULES
+
+    hard_snapshot = list(HARD_RULES)
+    soft_snapshot = list(SOFT_RULES)
+    yield
+    HARD_RULES[:] = hard_snapshot
+    SOFT_RULES[:] = soft_snapshot
+
+
+@pytest.fixture
 def make_result():
     """Factory that assembles a ScheduleResult from hand built bus schedules.
 

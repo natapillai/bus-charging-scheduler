@@ -18,6 +18,7 @@ from dataclasses import replace
 from .conflict import ConflictResolver, SchedulerState
 from .domain import BusSchedule, ChargeStop, ScheduleResult, StationOrderEntry
 from .geometry import choose_plan, distance_from_origin, travel_time
+from .objective import evaluate
 from .rules import HARD_RULES
 
 _ARRIVAL = 0
@@ -181,4 +182,5 @@ def schedule(scenario, weights=None) -> ScheduleResult:
     for rule in HARD_RULES:
         violations.extend(rule.validate(result, world))
     result.violations = violations
+    result.objective_breakdown = evaluate(result, world)
     return result

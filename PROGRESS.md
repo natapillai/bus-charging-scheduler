@@ -14,7 +14,7 @@ Status: in progress.
 * [x] 6. rules/base.py registry, hard.py, soft.py, and rules/__init__.py auto import. Run test_hard_rules.py and test_soft_rules.py.
 * [x] 7. conflict.py ConflictResolver. Run test_conflict.py.
 * [x] 8. engine.py event simulation that validates with the hard rules. Run test_engine.py.
-* [ ] 9. objective.py weighted aggregation. Run test_objective.py and test_extensibility.py.
+* [x] 9. objective.py weighted aggregation. Run test_objective.py and test_extensibility.py.
 * [ ] 10. viewmodel.py helpers. Run test_viewmodel.py.
 * [ ] 11. app.py with the four views plus the flag controlled weight panel, calling the viewmodel helpers.
 * [ ] 12. Full pytest run including test_scenarios.py, all green.
