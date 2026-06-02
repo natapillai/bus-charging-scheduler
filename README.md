@@ -2,6 +2,8 @@
 
 A charging scheduler for electric buses that share four chargers along the fixed route between Bengaluru and Kochi. It reads any of five scenarios from data files, decides each bus's charging plan and the order buses use each charger, and shows the result in a Streamlit app. The scheduler is a greedy event driven simulation with a pluggable rule registry and a tunable weighted objective, so the world can grow and the rules can change through data rather than rewrites.
 
+The app is hosted on Streamlit Community Cloud at https://bus-charging-scheduler-natapillai.streamlit.app.
+
 ## Running locally
 
 Clone the repository and create a virtual environment.

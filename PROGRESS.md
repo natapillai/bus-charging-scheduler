@@ -24,7 +24,7 @@ Status: complete, all fifteen stages done and the suite is green. The only remai
 
 ## Deliverables check
 
-* [ ] Hosted Streamlit link, public.
+* [x] Hosted Streamlit link, public. https://bus-charging-scheduler-natapillai.streamlit.app
 * [x] Public GitHub repo with all code and all five scenarios.
 * [x] README.md covering how to run, how to change a weight, and how to add a rule.
 * [x] ARCHITECTURE.md covering the approach and why, the data model, the anticipated changes list, a weight change example, an add a rule example, and the assumptions.
